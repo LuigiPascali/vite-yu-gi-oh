@@ -26,7 +26,29 @@
 <template>
 
     <header>
-        HEADER
+        
+        <div class="container-fluid">
+
+            <div class="row">
+                
+                <div class="col-auto d-flex align-items-center">
+
+                    <div class="logo_container">
+
+                        <img class="img-fluid" src="../assets/img/logo.png" alt="yu_gi_logo">
+
+                    </div>
+
+                    <h1>
+                        Yu-Gi-Oh Api
+                    </h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </header>
 
 </template>

@@ -11,10 +11,10 @@
 
         },
         components: {
-            //dichiarazione
+            
         },
         props:{
-            //utilizzo per file padre
+            
         },
     }
     
@@ -23,7 +23,29 @@
 <template>
 
     <main>
-        MAIN
+        
+        <div class="container">
+
+            <div class="row py-4">
+
+                <div class="col-auto">
+
+                    <select class="form-select">
+
+                        <option selected> Alien </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+            </div>
+
+        </div>
+
     </main>
 
 </template>
@@ -33,8 +55,7 @@
     @use "../assets/scss/partials/variables.scss" as *;
 
     main {
-        padding: 40px;
-        text-align: center;;
+        background-color: #D48F38;
     }
 
 </style>
