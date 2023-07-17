@@ -1,69 +1,48 @@
 <script>
 
     export default {
-
-        name: "Card",
-
         data() {
             return {
-
+                
             }
         },
-        methods: {
-
-        },
-        components: {
-            
-        },
-        props:{
-           card: {
+        props: {
+            card: {
                 type: Object,
                 default: {
-                    archetype: '',
-                    name: '',
+                    archetype:'',
+                    name:'',
                     card_images: ''
                 }
-           } 
-        },
+            },
+        }
+        
     }
 
 </script>
 
 <template>
 
-    <header>
-        
-        <div class="container-fluid">
-            
-            <div class="my_card">
+   <div class="card mb-3">
 
-                <div>
-                    <img :src="card.card_images[0].image_url" class="img-fluid" alt="card_image">
-                </div>
-
-                <div>
-                    <h3 class="text-center text-white p-4">
-                        {{ card.name }}
-                    </h3>
-                </div>
-
-                <div>
-                    <h4 class="text-center">
-                        {{ card.archetype }}
-                    </h4>
-                </div>
-
-            </div>
-
+        <div class="card-img-top">
+            <img :src="card.card_images[0].image_url" class="img-fluid" alt="">
         </div>
 
-    </header>
+        <div class="card-body">
+            <h2 class="card-title text-center text-white p-3">
+                {{ card.name }}
+            </h2>
+
+            <h3 class="card-text text-center">
+                {{ card.archetype }}
+            </h3>
+        </div>
+
+    </div>
 
 </template>
 
 <style lang="scss" scoped>
-
-    @use "../assets/scss/partials/variables.scss" as *;
-
 
 </style>
