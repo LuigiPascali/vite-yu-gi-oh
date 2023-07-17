@@ -14,10 +14,10 @@
             }
         },
         components: {
-            //dichiarazione
+            
         },
         props:{
-            //utilizzo per file padre
+            
         },
     }
 
@@ -57,9 +57,5 @@
 
     @use "../assets/scss/partials/variables.scss" as *;
 
-    header {
-        padding: 40px;
-        text-align: center;
-    }
 
 </style>
