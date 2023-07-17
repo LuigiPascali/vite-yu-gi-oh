@@ -1,7 +1,8 @@
-<script >
+<script>
 
   import HeaderComponent from './components/HeaderComponent.vue';
   import MainComponent from './components/MainComponent.vue';
+  import Loader from './components/Loader.vue';
 
   import axios from 'axios';
 
@@ -11,7 +12,8 @@
 
     data() {
       return {
-        store
+        store,
+        isLoading: false,
       }
     },
     methods: {
@@ -21,13 +23,16 @@
       axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
       .then(response => {
         
-        this.store.cards = response.data.data
+        this.store.cards = response.data.data;
+        isLoading = true;
         
       })
     },
+
     components: {
       HeaderComponent,
-      MainComponent
+      MainComponent,
+      Loader
     }
   }
 
@@ -37,10 +42,14 @@
 
   <HeaderComponent />
 
-  <MainComponent/>
+  <Loader v-if="isLoading = false"/>
+
+  <MainComponent v-else/>
 
 </template>
 
 <style lang="scss">
-@use "assets/scss/main";
+
+  @use "assets/scss/main";
+
 </style>
