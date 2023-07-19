@@ -2,21 +2,28 @@
 
     export default {
         data() {
+
             return {
                 
             }
+
         },
+
         props: {
+
             card: {
+
                 type: Object,
+
                 default: {
                     archetype:'',
                     name:'',
                     card_images: ''
                 }
+
             },
         }
-        
+       
     }
 
 </script>
@@ -30,6 +37,7 @@
         </div>
 
         <div class="card-body">
+
             <h2 class="card-title text-center text-white p-3">
                 {{ card.name }}
             </h2>
@@ -37,6 +45,7 @@
             <h3 class="card-text text-center">
                 {{ card.archetype }}
             </h3>
+            
         </div>
 
     </div>

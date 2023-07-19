@@ -1,7 +1,8 @@
 <script>
 
-    import SingleCard from './Card.vue';
+    import Card from './Card.vue';
     import {store} from '../store'
+
 
     export default {
         data() {
@@ -10,7 +11,8 @@
             }
         },
         components: {
-            SingleCard
+            Card,
+            
         }
     }
 
@@ -26,29 +28,29 @@
 
                 <div class="col-auto">
 
-                    <select class="form-select" aria-label="select">
+                    <select v-model="store.searchText" @change="$emit('search')" class="form-select" aria-label="Default select example">
                         <option selected> - </option>
-                        <option value="1">Alien</option>
-                        <option value="2">Noble Knight</option>
-                        <option value="3">Tainted Treasure</option>
-                        <option value="4">Melodious</option>
-                        <option value="5">Archfiend</option>
+                        <option  v-for="(singleType, i) in store.archetype" :key="i" :value='store.archetype[i].archetype_name'>{{ store.archetype[i].archetype_name }}</option>
                     </select>
 
                 </div>
 
             </div>
 
-            <div class="result bg-black px-5 py-3">
+            <div class="result bg-black px-5 py-3 mb-3">
+
                 <h3 class="text-white">
                     Found {{ store.cards.length }} cards
                 </h3>
+
             </div>
 
             <div class="row">
-                <div class="col-12 col-sm-6 col-md-5 col-lg-3" v-for="(card, i) in store.cards" :key="i">
-                    <SingleCard :card="card" />
+
+                <div class="col-12 col-sm-6 col-md-5 col-lg-3 mb-4" v-for="(card, i) in store.cards" :key="i">
+                    <Card :card="card" />
                 </div>
+
             </div>
 
         </div>

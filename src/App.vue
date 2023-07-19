@@ -2,7 +2,7 @@
 
   import HeaderComponent from './components/HeaderComponent.vue';
   import MainComponent from './components/MainComponent.vue';
-  import Loader from './components/Loader.vue';
+  
 
   import axios from 'axios';
 
@@ -18,21 +18,44 @@
     },
     methods: {
 
-    },
-    created() {
-      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
+    allCard() {
+      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0')
       .then(response => {
-        
-        this.store.cards = response.data.data;
-        isLoading = true;
-        
+      this.store.cards = response.data.data
+    })
+    },
+
+    searchType() {
+      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php', {
+        params: {
+          archetype : this.store.searchText
+        }
       })
+      .then(filter => {
+        this.store.cards = filter.data.data
+      })
+    }
+
+  },
+  created() {
+    this.allCard(),
+
+    axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php')
+    .then(archetype => {
+      this.store.archetype = archetype.data
+    })
+    },
+
+    mounted(){
+      setTimeout(() => {
+        this.isLoading = true;
+      }, 5000);
     },
 
     components: {
       HeaderComponent,
       MainComponent,
-      Loader
+      
     }
   }
 
@@ -42,9 +65,7 @@
 
   <HeaderComponent />
 
-  <Loader v-if="isLoading = false"/>
-
-  <MainComponent v-else/>
+  <MainComponent @search="searchType()"/>
 
 </template>
 
